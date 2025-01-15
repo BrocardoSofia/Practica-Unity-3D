@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class KeyPad : Interactable
 {
+    [SerializeField]
+    private GameObject door;
+    private bool doorOpen;
+
     void Start()
     {
         
@@ -14,6 +18,7 @@ public class KeyPad : Interactable
 
     protected override void Interact()
     {
-        Debug.Log("Interacted with " + gameObject.name);
+        doorOpen = !doorOpen;
+        door.GetComponent<Animator>().SetBool("IsOpen", doorOpen);
     }
 }
